@@ -35,6 +35,20 @@ function result() {
 
   }
 
-  story.textContent = ;
+  // story.textContent = ;
   story.style.visibility = 'visible';
+
+  // Copy storyText so new story generated each time button is pressed
+  let newStory = storyText; 
+
+  // Grab a random value from each of the 3 arrays each time
+  let xItem = randomValueFromArray(insertX);
+  let yItem = randomValueFromArray(insertY);
+  let zItem = randomValueFromArray(insertZ);
+
+  let replaced1 = newStory.replace(':insertx:', xItem);
+  let replaced2 = replaced1.replace(':inserty:', yItem);
+  let replaced3 = replaced2.replace(':insertz:', zItem);
+
+  console.log(replaced3);
 }
