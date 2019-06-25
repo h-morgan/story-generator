@@ -46,7 +46,7 @@ function result() {
   let yItem = randomValueFromArray(insertY);
   let zItem = randomValueFromArray(insertZ);
 
-  let replaced1 = newStory.replace(':insertx:', xItem);
+  let replaced1 = newStory.replace(/:insertx:/g, xItem);
   let replaced2 = replaced1.replace(':inserty:', yItem);
   let replaced3 = replaced2.replace(':insertz:', zItem);
 
