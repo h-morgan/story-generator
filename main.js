@@ -23,32 +23,35 @@ let insertZ = ['spontaneously combusted', 'melted into a puddle on the sidewalk'
 randomize.addEventListener('click', result);
 
 function result() {
+  
+  // Copy storyText so new story generated each time button is pressed
+  let newStory = storyText; 
+
+    // Grab a random value from each of the 3 arrays each time
+    let xItem = randomValueFromArray(insertX);
+    let yItem = randomValueFromArray(insertY);
+    let zItem = randomValueFromArray(insertZ);
+  
+    newStory = newStory.replace(/:insertx:/g, xItem);
+    newStory = newStory.replace(':inserty:', yItem);
+    newStory = newStory.replace(':insertz:', zItem);
 
   if(customName.value !== '') {
     let name = customName.value;
-
+    newStory = newStory.replace('Bob', name);
   }
 
   if(document.getElementById("uk").checked) {
-    let weight = Math.round(300);
-    let temperature =  Math.round(94);
+    let weight = Math.round(300 * (10* 1/0.7143)) + ' stone';
+    let temperature =  Math.round((94 - 32)*5/9) + ' centigrade';
 
+    newStory = newStory.replace('300 pounds', weight);
+    newStory = newStory.replace('94 fahrenheit', temperature);
   }
+
+  story.textContent = newStory;
 
   // story.textContent = ;
   story.style.visibility = 'visible';
 
-  // Copy storyText so new story generated each time button is pressed
-  let newStory = storyText; 
-
-  // Grab a random value from each of the 3 arrays each time
-  let xItem = randomValueFromArray(insertX);
-  let yItem = randomValueFromArray(insertY);
-  let zItem = randomValueFromArray(insertZ);
-
-  let replaced1 = newStory.replace(/:insertx:/g, xItem);
-  let replaced2 = replaced1.replace(':inserty:', yItem);
-  let replaced3 = replaced2.replace(':insertz:', zItem);
-
-  console.log(replaced3);
 }
